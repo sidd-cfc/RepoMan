@@ -13,4 +13,8 @@ CareerStartYear=int(input())
 from datetime import datetime
 current_year=datetime.now().year
 careerduration=current_year-CareerStartYear
-print('It been '+ str(careerduration)+ ' years since you started your career') # Display the tenure by subtracting the CareerStartYear and current_year  
+print('It been '+ str(careerduration)+ ' years since you started your career') # Display the tenure by subtracting the CareerStartYear and current_year
+
+myAge=26
+myFavouritePlayer='Cole Palmer'
+myAge>25 and myFavouritePlayer=='Cole Palmer'
