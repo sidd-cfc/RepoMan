@@ -1,0 +1,22 @@
+name: My First Workflow
+
+on: push
+
+jobs:
+    first_job:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Welcome message
+            run: echo "THis is my first Github action workflow Job"
+
+            -name: Checkout my code
+            run : actions/checkout@v4
+
+            -name: Setup python
+            uses: actions/setup-python@v4
+            with : python-version:'3.10'
+
+            -name: Run my python script
+            run : python eLiF.py
+          
