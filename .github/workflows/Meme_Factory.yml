@@ -21,7 +21,7 @@ jobs:                   # You define a job (group of steps). There can be multip
 
               #Step4: Generate a meme from the latest commit message
             - name: Generate Meme 
-              run: python meme_maker.py "(git log -1 --pretty=%B)" # This will extract the commit message
+              run: python ./Python_Stuff/meme_maker.py "(git log -1 --pretty=%B)" # This will extract the commit message
 
               #Step5: Upload meme artifact
             - name: Upload Meme
