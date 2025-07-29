@@ -25,7 +25,7 @@ jobs:                   # You define a job (group of steps). There can be multip
 
               #Step5: Upload meme artifact
             - name: Upload Meme
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                 name: Fresh-meme
                 path: meme-output.png  
