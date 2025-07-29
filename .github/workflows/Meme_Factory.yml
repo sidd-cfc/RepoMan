@@ -1,5 +1,8 @@
 name: Meme Factory      # Giving a name to your Workflow (this thing will show up in the GitHub's Action Tab)
-on: push                # Triggers the Worlflow everytime you push a code
+on: 
+    push:
+        paths:
+            - './Python_Stuff/meme_maker.py'                # Triggers the Worlflow everytime you push a code when this file changes
 
 jobs:                   # You define a job (group of steps). There can be multiple Jobs
     meme-time:
