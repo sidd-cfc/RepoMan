@@ -2,9 +2,8 @@ name: Meme Factory
 on:
   push:
     paths:
-      - 'Python_Stuff/meme_maker.py'  # Only trigger for this file
+      - 'Python_Stuff/meme_maker.py'
 
-# 👇 Add this to block concurrent runs
 concurrency:
   group: meme-only-${{ github.ref }}
   cancel-in-progress: true
@@ -14,11 +13,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # 👈 Crucial for git diff to work
+
+      - name: Debug changed files
+        run: |
+          echo "=== Changed files ==="
+          git diff --name-only HEAD~1 HEAD || echo "First commit (no parent)"
+          echo "====================="
+          
       - name: Verify exclusive trigger
         run: |
-          echo "This run ONLY happened because meme_maker.py was changed!"
-          echo "Changed files:"
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+          if [[ -f "Python_Stuff/meme_maker.py" ]]; then
+            echo "✅ meme_maker.py exists and was changed!"
+          else
+            echo "❌ File missing! Check path:"
+            ls Python_Stuff/
+            exit 1
+          fi
 
 
 # name: Meme Factory      # Giving a name to your Workflow (this thing will show up in the GitHub's Action Tab)
