@@ -9,7 +9,7 @@ args = parser.parse_args()
 
 # Load template
 try:
-    img = Image.open(args.input)
+    img = Image.open(args.input) 
     draw = ImageDraw.Draw(img)
     
     # Add sample text (customize this!)
