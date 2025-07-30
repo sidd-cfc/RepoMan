@@ -1,7 +1,7 @@
 import os
 from PIL import Image, ImageDraw 
 
-def create_meme(input_path, output_path): 
+def create_meme(input_path, output_path):  
     try:
         # Verify file exists
         if not os.path.exists(input_path):
