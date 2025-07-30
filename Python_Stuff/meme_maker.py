@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 import sys
 import os
 
-# Get commit message
+# Get commit message 
 commit_msg = sys.argv[1] if len(sys.argv) > 1 else "Default Meme Text"
 
 # Use correct path to template (go up one directory from Python_Stuff)
