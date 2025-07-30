@@ -1,27 +1,36 @@
-import argparse
-from PIL import Image, ImageDraw, ImageFont
+import os
+from PIL import Image, ImageDraw
 
-# Set up command-line arguments
-parser = argparse.ArgumentParser()
-parser.add_argument('--input', required=True, help='Path to template image')
-parser.add_argument('--output', required=True, help='Path to save meme')
-args = parser.parse_args()
+def create_meme(input_path, output_path):
+    try:
+        # Verify file exists
+        if not os.path.exists(input_path):
+            raise FileNotFoundError(f"Input file not found: {input_path}")
+            
+        img = Image.open(input_path)
+        draw = ImageDraw.Draw(img)
+        
+        # Add sample text (customize this!)
+        draw.text((50, 20), "GitHub Actions Meme", fill="black")
+        
+        # Create output directory if needed
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        img.save(output_path)
+        print(f"Meme saved to {output_path}")
+        return True
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        return False
 
-# Load template
-try:
-    img = Image.open(args.input) 
-    draw = ImageDraw.Draw(img)
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--input', required=True)
+    parser.add_argument('--output', required=True)
+    args = parser.parse_args()
     
-    # Add sample text (customize this!)
-    draw.text((10, 10), "Hello from GitHub Actions!", fill="black")
-    
-    # Save output
-    img.save(args.output)
-    print(f"Success! Meme saved to {args.output}")
-except Exception as e:
-    print(f"Error: {str(e)}")
-    exit(1)
-
+    if not create_meme(args.input, args.output):
+        exit(1)
 
 
 # from PIL import Image, ImageDraw, ImageFont

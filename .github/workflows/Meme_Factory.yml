@@ -23,7 +23,7 @@ jobs:
           echo "Current directory: $(pwd)"
           ls -R Python_Stuff/
           python Python_Stuff/meme_maker.py \
-            --input "Python_Stuff/images/meme-template.jpg" \
+            --input "sidd-cfc/RepoMan/Python_Stuff/images/meme-template.jpg" \
             --output "Python_Stuff/meme-output.png"
             
       - name: Upload meme
