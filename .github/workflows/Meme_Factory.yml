@@ -2,19 +2,30 @@ name: Meme Factory
 on:
   push:
     paths:
-      - 'Python_Stuff/meme_maker.py'  # Triggers only for this file
+      - 'Python_Stuff/meme_maker.py'
 
 jobs:
   make-meme:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-      - run: pip install Pillow
-      - run: python Python_Stuff/meme_maker.py
-      - uses: actions/upload-artifact@v3
+      
+      - name: Install Pillow
+        run: pip install Pillow
+        
+      - name: Generate meme
+        run: |
+          python Python_Stuff/meme_maker.py \
+            --input "Python_Stuff/images/meme-template.jpg" \
+            --output "Python_Stuff/meme-output.png"
+            
+      - name: Upload meme
+        uses: actions/upload-artifact@v3
         with:
           name: fresh-meme
           path: Python_Stuff/meme-output.png
