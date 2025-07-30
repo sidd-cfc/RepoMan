@@ -11,7 +11,7 @@ template_path = os.path.join(os.path.dirname(__file__), '../Python_Stuff/images/
 try:
     img = Image.open(template_path)
     draw = ImageDraw.Draw(img)
-    font = ImageFont.load_default()
+    font = ImageFont.load_default() 
     
     # Add text (adjust position as needed)
     draw.text((50, 50), commit_msg, font=font, fill="black")
