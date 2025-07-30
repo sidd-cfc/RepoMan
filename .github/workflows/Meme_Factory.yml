@@ -4,7 +4,11 @@ on:
         paths:
             - '/Python_Stuff/meme_maker.py'     
         branches:
-                - 'main'           # Triggers the Worlflow everytime you push a code when this file changes
+                - 'main'    
+        # BLOCK IF OTHER FILES CHANGED:
+        # if: |
+        #     contains(github.event.commits[0].modified, 'Python_Stuff/meme_maker.py') &&
+        #     github.event.commits[0].modified.length == 1       # Triggers the Worlflow everytime you push a code when this file changes
 
 jobs:                   # You define a job (group of steps). There can be multiple Jobs
     meme-time:
