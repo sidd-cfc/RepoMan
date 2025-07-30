@@ -20,12 +20,14 @@ jobs:
         
       - name: Generate meme
         run: |
+          echo "Current directory: $(pwd)"
+          ls -R Python_Stuff/
           python Python_Stuff/meme_maker.py \
             --input "Python_Stuff/images/meme-template.jpg" \
             --output "Python_Stuff/meme-output.png"
             
       - name: Upload meme
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v
         with:
           name: fresh-meme
           path: Python_Stuff/meme-output.png
