@@ -1,41 +1,60 @@
-name: Meme Factory      # Giving a name to your Workflow (this thing will show up in the GitHub's Action Tab)
-on: 
-    push:
-        paths:
-            - '/Python_Stuff/meme_maker.py'     
+name: Meme Factory
+on:
+  push:
+    paths:
+      - 'Python_Stuff/meme_maker.py'  # Case-sensitive exact path
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prove file exists
+        run: |
+          echo "=== FILE CHECK ==="
+          ls Python_Stuff/
+          echo "=== END CHECK ==="
+
+
+
+# name: Meme Factory      # Giving a name to your Workflow (this thing will show up in the GitHub's Action Tab)
+# on: 
+#     push:
+#         paths:
+#             - '/Python_Stuff/meme_maker.py'     
  
-jobs: 
-    make-meme:
-      runs-on: ubuntu-latest
-      steps:
-            #Step1: Download the repo files
-            - name: Download the Repo files
-              uses: actions/checkout@v4        # Downloads your repo files into the VM 
+# jobs: 
+#     make-meme:
+#       runs-on: ubuntu-latest
+#       steps:
+#             #Step1: Download the repo files
+#             - name: Download the Repo files
+#               uses: actions/checkout@v4        # Downloads your repo files into the VM 
             
-            #Step2: Debug the files
-            - name: Debug files
-              run: |
-                echo "Current directory: $pwd"
-                ls -R Python_Stuff/
+#             #Step2: Debug the files
+#             - name: Debug files
+#               run: |
+#                 echo "Current directory: $pwd"
+#                 ls -R Python_Stuff/
 
-              #Step3 : Setup Python
-            - name: Setup Python
-              uses: actions/setup-python@v4    # It will install Python in that VM 
-              with:
-                python-version: '3.10'         # This will install Python version 3.10
+#               #Step3 : Setup Python
+#             - name: Setup Python
+#               uses: actions/setup-python@v4    # It will install Python in that VM 
+#               with:
+#                 python-version: '3.10'         # This will install Python version 3.10
               
-                #Step4 : Install Pillow (Python Library for Images)
-            - name: Install Dependencies
-              run: pip install Pillow          # a Python library for image manipulation
+#                 #Step4 : Install Pillow (Python Library for Images)
+#             - name: Install Dependencies
+#               run: pip install Pillow          # a Python library for image manipulation
 
-              #Step5: Generate a meme from the latest commit message
-            - name: Generate Meme 
-              run: python ./Python_Stuff/meme_maker.py "(git log -1 --pretty=%B)" # This will extract the commit message
+#               #Step5: Generate a meme from the latest commit message
+#             - name: Generate Meme 
+#               run: python ./Python_Stuff/meme_maker.py "(git log -1 --pretty=%B)" # This will extract the commit message
 
-              #Step6: Upload meme artifact
-            - name: Upload Meme
-              uses: actions/upload-artifact@v4
-              with:
-                name: Fresh-meme
-                path: meme-output.png  
+#               #Step6: Upload meme artifact
+#             - name: Upload Meme
+#               uses: actions/upload-artifact@v4
+#               with:
+#                 name: Fresh-meme
+#                 path: meme-output.png  
 
