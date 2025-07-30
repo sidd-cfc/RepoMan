@@ -27,7 +27,7 @@ jobs:
             --output "Python_Stuff/meme-output.png"
             
       - name: Upload meme
-        uses: actions/upload-artifact@v
+        uses: actions/upload-artifact@v4
         with:
           name: fresh-meme
           path: Python_Stuff/meme-output.png
