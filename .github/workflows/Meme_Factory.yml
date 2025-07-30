@@ -3,8 +3,8 @@ on:
     push:
         paths:
             - '/Python_Stuff/meme_maker.py'     
-
-jobs:
+ 
+jobs: 
     make-meme:
       runs-on: ubuntu-latest
       steps:
