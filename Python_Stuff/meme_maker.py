@@ -1,5 +1,5 @@
 import os
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw 
 
 def create_meme(input_path, output_path):
     try:
