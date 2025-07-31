@@ -1,4 +1,4 @@
-name: GEnerate ASCII Artwork
+name: Generate ASCII Artwork
 
 on:
     push
@@ -14,7 +14,7 @@ jobs:
           run: cowsay -f dragon "Run for cover, I am a DRAGON..... RAAAWWRRR" >> dragon.txt
 
         - name: Upload Dragon text file
-          uses: actions@upload-artifact@v4
+          uses: actions/upload-artifact@v4
           with:
             name: dragon-text-file
             path: dragon.txt
@@ -24,7 +24,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: Download Dragon text file
-          uses: actions@download-artifact@v4
+          uses: actions/download-artifact@v4
           with:
             name: dragon-text-file
 
