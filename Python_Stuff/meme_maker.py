@@ -18,7 +18,7 @@ def create_meme(input_path, output_path):
         img.save(output_path)
         print(f"Meme saved to {output_path}")
         return True
-    except Exception as e:
+    except Exception as e: 
         print(f"Error: {str(e)}")
         return False
 
