@@ -63,4 +63,4 @@ else:
             print("Goodbye!")
             break
         else:
-            print("Invalid cho
+            print("Invalid choice. Please try again.")
