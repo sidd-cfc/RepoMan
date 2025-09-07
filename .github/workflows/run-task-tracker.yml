@@ -1,0 +1,19 @@
+name: Run Task Tracker
+
+on:
+    workflow_dispatch:       #lets you run manually from GHA tab
+
+jobs:
+    run-script:
+        runs-on: ubuntu-latest # Github will spinup a Linux VM for me
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+          
+        - name: Setup Python
+          uses: actions/setup-python@v4
+          with:
+            python-version: "3.10"
+
+        - name: Run the script
+          run: python ./Python_Stuff/task-tracker.py
